@@ -1,4 +1,4 @@
-package com.refacoring.workbook.matcher;
+package com.refacoring.workbook.comments;
 
 public class Matcher {
     public Matcher() {}
