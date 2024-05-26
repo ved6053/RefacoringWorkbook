@@ -6,10 +6,7 @@ public class Matcher {
                          int clipLimit, int delta)
     {
 
-        // Clip "too-large" values
-        for (int i = 0; i < actual.length; i++)
-            if (actual[i] > clipLimit)
-                actual[i] = clipLimit;
+        makeLargeUpToClipLimit(actual, clipLimit);
 
         // Check for length differences
         if (actual.length != expected.length)
@@ -21,5 +18,11 @@ public class Matcher {
                 return false;
 
         return true;
+    }
+
+    private void makeLargeUpToClipLimit(int []actual, int clipLimit){
+        for (int i = 0; i < actual.length; i++)
+            if (actual[i] > clipLimit)
+                actual[i] = clipLimit;
     }
 }
