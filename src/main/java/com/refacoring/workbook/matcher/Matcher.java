@@ -6,12 +6,12 @@ public class Matcher {
                          int clipLimit, int delta)
     {
 
-        makeLargeUpToClipLimit(actual, clipLimit);
+        keepLargeUpToClipLimit(actual, clipLimit);
         return isLengthOfActualEqualToExpected(actual.length , expected.length)
                 && isAbsDifferenceLessOrEqualToDelta(actual, expected, delta);
     }
 
-    private void makeLargeUpToClipLimit(int []actual, int clipLimit){
+    private void keepLargeUpToClipLimit(int []actual, int clipLimit){
         for (int i = 0; i < actual.length; i++)
             if (actual[i] > clipLimit)
                 actual[i] = clipLimit;
