@@ -4,6 +4,7 @@ import java.util.*;
 import java.io.*;
 
 public class Report {
+    //TODO: report extract method
     public static void report(Writer out, List machines, Robot robot)
             throws IOException
     {
