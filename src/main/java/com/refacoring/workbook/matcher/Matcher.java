@@ -8,7 +8,7 @@ public class Matcher {
 
         keepLargeUpToClipLimit(actual, clipLimit);
         return isLengthOfActualEqualToExpected(actual.length , expected.length)
-                && isAbsDifferenceLessOrEqualToDelta(actual, expected, delta);
+                && isAbsDifferenceLessOrEqualToDeltaForEach(actual, expected, delta);
     }
 
     private void keepLargeUpToClipLimit(int []actual, int clipLimit){
@@ -20,7 +20,7 @@ public class Matcher {
         return actualLength==expectedLength;
     }
 
-    private boolean isAbsDifferenceLessOrEqualToDelta(int[] actual, int[] expected, int delta) {
+    private boolean isAbsDifferenceLessOrEqualToDeltaForEach(int[] actual, int[] expected, int delta) {
         for (int i = 0; i < actual.length; i++)
             if (Math.abs(expected[i] - actual[i]) > delta)
                 return false;
