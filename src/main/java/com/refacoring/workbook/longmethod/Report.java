@@ -9,7 +9,6 @@ public class Report {
     {
         out.write("FACTORY REPORT\n");
         writeMachines(out, machines);
-        out.write("\n");
         writeRobot(out, robot);
         out.write("========\n");
 
@@ -19,7 +18,7 @@ public class Report {
         for(Machine machine:machines) {
             writeMachine(out, machine);
         }
-
+        out.write("\n");
     }
     private static void writeMachine(Writer out,  Machine machine) throws IOException {
         out.write("Machine " + machine.name());
