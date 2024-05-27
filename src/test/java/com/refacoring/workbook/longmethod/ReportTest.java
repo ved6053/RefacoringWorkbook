@@ -2,7 +2,7 @@ package com.refacoring.workbook.longmethod;
 
 import junit.framework.TestCase;
 import org.junit.Test;
-
+import java.util.List;
 import java.util.ArrayList;
 import java.io.PrintStream;
 import java.io.StringWriter;
@@ -14,7 +14,7 @@ public class ReportTest  {
 
     @Test
     public void testReport() throws IOException {
-        ArrayList line = new ArrayList();
+        List<Machine> line = new ArrayList<>();
         line.add(new Machine("mixer", "left"));
 
         Machine extruder = new Machine("extruder", "center");
