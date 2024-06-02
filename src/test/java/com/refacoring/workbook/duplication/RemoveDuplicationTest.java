@@ -32,9 +32,24 @@ public class RemoveDuplicationTest  {
     @Test
     public void testRemoveTemplate(){
         String sourceTemplate = "alKGLDLHSL%CODE%125337538hjkaGHDKHSK%ALTCODE%21583967963";
-
-        String reqId = "32514327586597538";
-        removeDuplication.printTemplate(sourceTemplate, reqId);
+        String replaceWith = "32514327586597538";
+        removeDuplication.printTemplate(sourceTemplate, replaceWith);
         assertEquals(outContent.toString(), "alKGLDLHSL32514327586597538125337538hjkaGHDKHSK%ALTCODE%21583967963alKGLDLHSL%CODE%125337538hjkaGHDKHSK32514-32721583967963");
+    }
+
+    @Test
+    public void testRemoveTemplateWhenCODEMissing(){
+        String sourceTemplate = "hjkaGHDKHSK%ALTCODE%21583967963";
+        String replaceWith = "32514327586597538";
+        removeDuplication.printTemplate(sourceTemplate, replaceWith);
+        assertEquals(outContent.toString(), "Error in substitute()");
+    }
+
+    @Test
+    public void testRemoveTemplateWhenALTCODECODEMissing(){
+        String sourceTemplate = "hjkaGHDKHSK%CODE%21583967963";
+        String replaceWith = "32514327586597538";
+        removeDuplication.printTemplate(sourceTemplate, replaceWith);
+        assertEquals(outContent.toString(), "hjkaGHDKHSK3251432758659753821583967963Error in substitute()");
     }
 }

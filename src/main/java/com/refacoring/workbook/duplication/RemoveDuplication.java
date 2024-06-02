@@ -3,30 +3,19 @@ import static java.lang.System.out;
 
 public class RemoveDuplication {
 
-    void printTemplate(String sourceTemplate, String reqId) {
-        try {    String template = new String(sourceTemplate);
-            // Substitute for %CODE%
-            int templateSplitBegin = template.indexOf("%CODE%");
-            int templateSplitEnd = templateSplitBegin + 6;
-            String templatePartOne = new String(
-                    template.substring(0, templateSplitBegin));
-            String templatePartTwo = new String(
-                    template.substring(templateSplitEnd, template.length()));
-            String code = new String(reqId);
-            out.print(new String(templatePartOne + code + templatePartTwo));
-
-            // Substitute for %ALTCODE%
-            templateSplitBegin = template.indexOf("%ALTCODE%");
-            templateSplitEnd = templateSplitBegin + 9;
-            templatePartOne = new String(
-                    template.substring(0, templateSplitBegin));
-            templatePartTwo = new String(
-                    template.substring(templateSplitEnd, template.length()));
-           String altcode = code.substring(0,5) + "-" + code.substring(5,8);
-            out.print(templatePartOne + altcode + templatePartTwo);
+    void printTemplate(String sourceTemplate, String replaceWith) {
+        try {
+            out.print(getTemplate(sourceTemplate, replaceWith, "%CODE%"));
+            out.print(getTemplate(sourceTemplate, replaceWith.substring(0,5) + "-" + replaceWith.substring(5,8), "%ALTCODE%"));
         } catch (Exception e) {
-            out.println("Error in substitute()");
+            out.print("Error in substitute()");
         }
     }
+
+   String  getTemplate(String template,String replaceWith, String suffix) {
+       int templateSplitBegin = template.indexOf(suffix);
+       int templateSplitEnd = templateSplitBegin + suffix.length();
+       return template.substring(0, templateSplitBegin) + replaceWith +  template.substring(templateSplitEnd, template.length());
+   }
 
 }
