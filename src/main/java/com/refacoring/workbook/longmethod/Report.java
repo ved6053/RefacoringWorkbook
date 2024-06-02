@@ -7,13 +7,17 @@ public class Report {
     public static void report(Writer out, List<Machine> machines, Robot robot)
             throws IOException
     {
-        out.write("FACTORY REPORT\n");
+        writeHeader(out);
         writeMachines(out, machines);
         writeRobot(out, robot);
-        out.write("========\n");
+        writeFooter(out);
+
 
     }
 
+    private static void writeHeader(Writer out) throws IOException  {
+        out.write("FACTORY REPORT\n");
+    }
     private static void writeMachines(Writer out, List<Machine> machines) throws IOException {
         for(Machine machine:machines) {
             writeMachine(out, machine);
@@ -35,6 +39,8 @@ public class Report {
         if (robot.bin() != null)
             out.write(" bin=" + robot.bin());
         out.write("\n");
-
+    }
+    private static void writeFooter(Writer out) throws IOException {
+        out.write("========\n");
     }
 }
